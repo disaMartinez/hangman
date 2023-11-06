@@ -1,0 +1,17 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: blue;
+    background-size: cover;
+    padding: 75px;
+}
+
+.titol {
+    color: white;
+    text-align: center;
+    font-size: 50;
+}
