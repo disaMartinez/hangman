@@ -1,23 +1,70 @@
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 0;
-    padding: 0;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
 header {
     background-color: blue;
     background-size: cover;
-    padding: 75px;
+    padding: 50px;
 }
 
 .titol {
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: white;
     text-align: center;
-    font-size: 50;
+    font-size: 55;
+}
+
+#abecedario {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en líneas si no hay espacio */
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.lletra-btn {
+    margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#tauler, #tauler div {
+    flex-direction: row;
+    justify-content: space-around; 
+    align-items: center;
+    text-align: center;
+    margin-top: 5px;
+    padding: 5px;
+}
+
+#lletresPerEsbrinar {
+    font-size: 50px;
+}
+
+#imgTauler {
+    max-width: 30%;
+    height: auto;
 }
 
 .playerInfo{
     text-align: center;
     align-items: center;
+}
+
+.playerPlaying{
+    display: none;
+    text-align: center;
+    align-items: center;
+    background-color: lightblue;
+    margin: 0;
+}
+
+#estadistiques {
+    text-align: center;
 }

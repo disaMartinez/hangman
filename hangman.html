@@ -6,7 +6,7 @@
     <!-- Link a l'arxiu CSS -->
     <link rel="stylesheet" href="style.css">
     <!-- Link a l'arxiu Javascript -->
-    <script src="jamman.js"></script>
+    <script src="hamman.js"></script>
 
     <title>Hangman</title>
 </head>
@@ -15,14 +15,39 @@
 <body onload = "load()">
 
     <header>
-        <div class="titol">JAMMAN</div>
+        <div id="titol" class="titol">HAMMAN</div>
     </header>
 
     <div id="playerDiv" class="playerInfo">
         <h1>Player Information</h1>
-        <input type="text" id="playerInfo">
-        <button onclick="saveName()">Play</button>
+        <input type="text" id="playerInfo" placeholder = "PON TU NOMBRE PUTA">
+        <button onclick="startGame()">Play</button>
     </div>
+
+    <div class="playerPlaying">
+        <h2 id="playerTitle" class="playerPlaying">Noelia's playing</h2>
+        <div id="estadistiques" class="playerPlaying">
+            <div id="stats">
+                <p>Wins: <span id="won">0</span>, Loses: <span id="lost">0</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="tauler" style="display: none;">
+        <div>
+            <div>
+                <img src="./img/jamman_1.png" alt="" id="imgTauler"/>
+            </div>
+            <div>
+                <div id="wordsToGuess">_ _ _ _</div>
+                <div> <input type="text" id="guessWord" placeholder="Guess!"/> <button onclick="guess()">Gucci</button></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="abecedario" style="display: none;"> </div>
+
+    
 
 </body>
 
