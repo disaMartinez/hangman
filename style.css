@@ -16,3 +16,8 @@ header {
     text-align: center;
     font-size: 50;
 }
+
+.playerInfo{
+    text-align: center;
+    align-items: center;
+}
