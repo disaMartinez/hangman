@@ -24,8 +24,9 @@ class Player{
         this.name = name;
     }
 
-    wordToGuess(word){
+    wordToGuess(word, guessed){
         this.word = word;
+        this.guessed = guessed;
     }
 }
 
@@ -46,8 +47,19 @@ function load() {
         };
         alphabetContainer.appendChild(button);
     }
+
+    //Carga el listener al input para que haga lo mismo que el botón
+    var input = document.getElementById("playerInfo");
+    input.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            if(input.value != '')
+                startGame();
+        }
+    });
    
 }
+
 
 function startGame(){
 
@@ -75,33 +87,69 @@ function startGame(){
     //Mostrar las letras para guessear
     document.getElementById("abecedario").style.display = "flex";
 
-    showStats();
+    //showStats();
     startHamman();
 }
 
-function guess(){
-    //Funcion para mirar si la letra o la palabra que ha entrado es correcta
+//Cositas del stackoverflow :)
+function getAllIndexes(arr, val) {
+    var indexes = [], i = -1;
+    while ((i = arr.indexOf(val, i+1)) != -1){
+        indexes.push(i);
+    }
+    return indexes;
+}
 
-    //Cambiar el NewPlayer guessed, lives y letters
 
-    //Si es correcta mostrar en el _ _ _ 
+function guess(letra){
+    //Funcion para mirar si la letra o la palabra que ha entrado esiste
+    var posicionesDeLaLetra = getAllIndexes(NewPlayer.word, letra);
 
-    //Si no es correcta cambiar imagen
+    if(posicionesDeLaLetra.length == 0){
+        //Ha fallado
+        //Quitar vida
+        //Modificar guessed (NewPlayer)
+        //Bloquear letra
+        //Cambiar imagen
+    }
+    else{
+        //Ha asertaro
+        //Bloquear letra
+        //Cambiar _ del tablero      
+
+    }
+
+    //Cambiar el NewPlayer guessed y letters
+    
+    //Añadir la letra que ha dicho
+    NewPlayer.letters.push(letra); 
 
     //Mirar si ha gastado todas sus vidas
+    //Morision
 }
 
 function startHamman(){
 
     //Escojer una palabra de la lista y añadirla al jugador como word
-    
-    //Cargar las _ _ _ a wordsToGuess   
+    var word = paraules[Math.floor(Math.random()*paraules.length)];
+    console.log(word);
 
+    //Cargar las _ _ _ a wordsToGuess  
+    var guessed = []
+    word.toLowerCase().split("").forEach(element => { //Per cada lletra de la paraula
+        if (element === " ") { //Si es un espai escriu un espai
+            guessed.push(" ")
+        } else { //Si es qualsevol altre lletra escriu un _
+            guessed.push("_")
+        }
+    });
+
+    NewPlayer.wordToGuess(word,guessed)
+
+    //Poner los _ en el tablero
+    var puntitos = document.getElementById("wordsToGuess");
+    puntitos.innerText = guessed.toString().replaceAll(',',' ',);
 }
-
-
-
-
 
 // Función para obtener y mostrar las estadísticas almacenadas en localStorage
 // function showStats() {
