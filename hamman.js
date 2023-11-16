@@ -106,7 +106,11 @@ function guess(letra, form) {
     //console.log(form)
     //Funcion para mirar si la letra o la palabra que ha entrado esiste
     var posicionesDeLaLetra = getAllIndexes(NewPlayer.word, letra.textContent);
-
+    //Miramos si el guess no esta vacio
+    /*if (letra.trim() === '') {
+        alert('Por favor, ingresa una palabra.');
+        return;
+    }*/
     if (posicionesDeLaLetra.length == 0) {
         //Ha fallado
         //Quitar vida
@@ -157,6 +161,8 @@ function guess(letra, form) {
     //Mirar si ha gastado todas sus vidas
     if (NewPlayer.lives === 0) {
         // Morision
+        // Cambiar la imagen a la de perder
+        actualizarImagenAhorcado()
         // (Aquí puedes realizar alguna acción para indicar que el jugador ha perdido)
         alert('¡Lo siento, has perdido! La palabra correcta era: ' + NewPlayer.word);
         reiniciarJuego();
