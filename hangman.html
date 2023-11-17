@@ -3,44 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Link a l'arxiu CSS -->
+    <!-- Link to the CSS file -->
     <link rel="stylesheet" href="style.css">
-    <!-- Link a l'arxiu Javascript -->
+    <!-- Link to the JavaScript file -->
     <script src="hamman.js"></script>
 
     <title>Hangman</title>
 </head>
 
-<!-- Funcion que cargara imagenes o cosas a la página -->
+<!-- Function that will load images or things to the page -->
 <body onload = "load()">
 
     <header>
-        <div id="titol" class="titol">HAMMAN</div>
+        <div id="title" class="title">HAMMAN</div>
     </header>
 
     <div id="playerDiv" class="playerInfo">
         <h1>Player Information</h1>
-        <input type="text" id="playerInfo" placeholder = "PON TU NOMBRE!!">
+        <input type="text" id="playerInfo" placeholder = "ENTER YOUR NAME!!">
         <button id="btnStart" onclick="startGame()">Play</button>
     </div>
 
     <div class="playerPlaying">
         <h2 id="playerTitle" class="playerPlaying">Noelia's playing</h2>
-        <div id="estadistiques" class="playerPlaying">
+        <div id="statistics" class="playerPlaying">
             <div id="stats">
                 <p>Wins: <span id="won">0</span>, Loses: <span id="lost">0</span></p>
             </div>
         </div>
     </div>
 
-    <div id="tauler" style="display: none;">
+    <div id="board" style="display: none;">
         <div>
             <div>
-                <button id="btnReiniciar" onclick="startHamman()" style="display: none;">Reiniciar</button>
-                <button id="btnSortir" onclick="reiniciarJuego()" style="display: none;">Sortir</button>
+                <button id="btnRestart" onclick="startHamman()" style="display: none;">Restart</button>
+                <button id="btnExit" onclick="restartGame()" style="display: none;">Exit</button>
             </div>
             <div>
-                <img src="./img/jamman_8.png" alt="" id="imgTauler"/>
+                <img src="./img/jamman_8.png" alt="" id="imgBoard"/>
             </div>
             <div>
                 <div id="wordsToGuess"></div>
@@ -52,7 +52,7 @@
         </div>
     </div>
 
-    <div id="abecedario" style="display: none;"> </div>
+    <div id="alphabet" style="display: none;"> </div>
 
     
 

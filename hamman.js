@@ -1,5 +1,5 @@
-//Podemos hacerlo asi o cargando un txt, como quieras :)
-let paraules = [
+// We can do it like this or by loading a txt file, as you prefer :)
+let words = [
     'Elephant', 'Sunshine', 'Backpack',
     'Harmony', 'Telescope', 'Enigma', 'Mango', 'Symphony', 'Lighthouse',
     'Radiant', 'Quasar', 'Serendipity', 'Saffron', 'Umbrella', 'Velocity', 'Whimsical', 'Cascade', 'Nebula', 'Zenith', 'Octopus'
@@ -10,11 +10,11 @@ let wins = 0;
 
 class Player {
     name;
-    word;               //La paraula a esbrinar
-    guessed;            //El progress que porta ???? ????
-    haGanado;
-    lives;              //Els intents que li queden
-    letters;            //Les lletres que ha dit
+    word;               //Word to guess
+    guessed;            // The progress it carries
+    haGanado;           // Has won
+    lives;              // The attempts remaining
+    letters;            // The letters guessed
 
     constructor() {
         this.name = "";
@@ -44,13 +44,13 @@ var NewPlayer = new Player();
 
 function load() {
 
-    //Crear las letras pero no las muestro aun
-    var alphabetContainer = document.getElementById('abecedario');
+    // Create the letters but don't show them yet
+    var alphabetContainer = document.getElementById('alphabet');
 
     for (var i = 65; i <= 90; i++) {
         var letter = String.fromCharCode(i);
         var button = document.createElement('button');
-        button.className = 'lletra-btn';
+        button.className = 'letter-btn';
         button.id = letter;
         button.textContent = letter;
         button.onclick = function () {
@@ -59,7 +59,7 @@ function load() {
         alphabetContainer.appendChild(button);
     }
 
-    //Carga el listener al input para que haga lo mismo que el botón
+    // Load the listener for the input to do the same as the button
     var input = document.getElementById("playerInfo");
     input.addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
@@ -68,40 +68,38 @@ function load() {
                 startGame();
         }
     });
-
 }
 
 function startGame() {
-
-    //Creamos el jugador
+    // Create the player
     NewPlayer.setName(document.getElementById("playerInfo").value);
-
+    // Display player information
     document.getElementById("playerTitle").textContent = `${NewPlayer.name} is playing`;
 
-    //Miramos si el nombre no esta vacio
+    // Check if the name is not empty
     if (NewPlayer.name.trim() === '') {
-        alert('Por favor, ingresa tu nombre antes de iniciar el juego.');
+        alert('Please enter your name before starting the game.');
         return;
     }
-    //Escondemos todo el div para comenzar el juego
+    // Hide the player information div
     document.getElementById("playerDiv").style.display = "none";
 
-    //Mostramos la info del jugador
+    // Display player info
     Array.from(document.getElementsByClassName("playerPlaying")).forEach(element => {
         element.style.display = "block"
     });
 
-    //Mostramos el tablero
-    document.getElementById("tauler").style.display = "flex";
+    // Display the game board
+    document.getElementById("board").style.display = "flex";
 
-    //Mostrar las letras para guessear
-    document.getElementById("abecedario").style.display = "flex";
+    // Display the alphabet for guessing
+    document.getElementById("alphabet").style.display = "flex";
 
-    //showStats();
+    // Start the game
     startHamman();
 }
 
-//Cositas del stackoverflow :)
+// Little things from Stack Overflow :)
 function getAllIndexes(arr, val) {
     var indexes = [], i = -1;
     while ((i = arr.indexOf(val, i + 1)) != -1) {
@@ -111,128 +109,120 @@ function getAllIndexes(arr, val) {
 }
 
 function guessWord(){
-    let paraula = document.getElementById('guessWord').value;
+    // Get the word to guess from the input
+    let wordToGuess = document.getElementById('guessWord').value;
 
-    //Miramos si el guess no esta vacio
-    if (paraula.trim() === '') {
-        alert('Por favor, ingresa una palabra.');
+    // Check if the input is not empty
+    if (wordToGuess.trim() === '') {
+        alert('Please enter a word.');
+        return;
+    }
+    // Check if the length of the input word matches the length of the target word
+    if(wordToGuess.trim().length != NewPlayer.word.length){
+        alert('Please enter a word of length: ' + NewPlayer.word.length);
         return;
     }
 
-    if(paraula.trim().length != NewPlayer.word.length){
-        alert('Por favor, ingresa una palabra de largada: ' + NewPlayer.word.length);
-        return;
-    }
-
-    if(paraula.toLowerCase() == NewPlayer.word.toLowerCase()){
-        console.log("Funciona?");
+    // Check if the guessed word is correct
+    if(wordToGuess.toLowerCase() == NewPlayer.word.toLowerCase()){
         NewPlayer.haGanadoGuessWord = true;
         console.log(NewPlayer.haGanado);
     }
     else{
+        // Decrease lives if the guessed word is incorrect
         NewPlayer.lives--;
     }
-
+    // Update the UI
     updateUI();
-
 }
 
-function guess(letra) {
-    
-    //Funcion para mirar si la letra o la palabra que ha entrado esiste
-    var posicionesDeLaLetra = getAllIndexes(NewPlayer.word.toUpperCase(), letra.textContent);
+function guess(letter) {
+    // Function to check if the entered letter or word exists
+    var positionsOfLetter = getAllIndexes(NewPlayer.word.toUpperCase(), letter.textContent);
 
-    letra.disabled = true;
-    NewPlayer.letters.push(letra.textContent.toLowerCase());    
+    // Disable the clicked letter
+    letter.disabled = true;
+    NewPlayer.letters.push(letter.textContent.toLowerCase());    
 
-    if (posicionesDeLaLetra.length == 0) {
-        //Ha fallado
-        //Quitar vida
+    // If the letter is not present in the word
+    if (positionsOfLetter.length == 0) {
+        // If the letter is incorrect
+        // Decrease lives
         NewPlayer.lives--;
-        //Modificar guessed (NewPlayer)
+        // Modify guessed (NewPlayer)
         NewPlayer.guessed = NewPlayer.guessed.map((char, index) => {
-            return posicionesDeLaLetra.includes(index) ? letra : char;
+            return positionsOfLetter.includes(index) ? letter : char;
         });
-        //Bloquear letra
-        letra.disabled = true;
-        //Cambiar imagen
+        // Disable the letter
+        letter.disabled = true;
     }
     else {
-        //Ha asertaro
-        posicionesDeLaLetra.forEach((index) => {
-            // Mostrar la letra
-            NewPlayer.guessed[index] = letra.textContent.toLowerCase();
-            // Actualizar la letra en el tablero
+        // If the letter is correct
+        positionsOfLetter.forEach((index) => {
+            // Display the letter
+            NewPlayer.guessed[index] = letter.textContent.toLowerCase();
         });
-        //Cambiar _ del tablero      
-        //NewPlayer.letters.push(letra.toLowerCase());
-        // Actualizar la interfaz de usuario
+        // Update the UI
         updateUI();
     }
+    // Add the guessed letter to NewPlayer guessed and letters
+    NewPlayer.letters.push(letter);
 
-    // Cambiar el NewPlayer guessed y letters
-    //NewPlayer.guessedString = NewPlayer.guessed.join('');
-    //NewPlayer.letters.push(letra.textContent.toLowerCase());
-    // Añadir la letra que ha dicho
-    NewPlayer.letters.push(letra);
-    
-
-    // Actualizar la interfaz de usuario
+    // Update the UI
     updateUI();
 }
 
-// Función para actualizar la imagen del ahorcado
 function actualizarImagenAhorcado() {
+    // Update the hangman image
+    var hangmanImage = document.getElementById("imgBoard");
 
-    // imagen 
-    var imagenAhorcado = document.getElementById("imgTauler");
-
-    if (imagenAhorcado) {
-        // Verificar si el jugador ha perdido
+    if (hangmanImage) {
+         // Check if the player has lost
         if (NewPlayer.lives === 0) {
-            // Cambiar la imagen a la de perder
-            imagenAhorcado.src = "./img/jamman_lose.png";
-        } else if (NewPlayer.getHaGanado() || NewPlayer.haGanadoGuessWord) { //Posar win condition
-            // Cambiar la imagen a la de ganar
-            imagenAhorcado.src = "./img/jamman_win.png";
+            // Change the image to the losing one
+            hangmanImage.src = "./img/jamman_lose.png";
+        } else if (NewPlayer.getHaGanado() || NewPlayer.haGanadoGuessWord) { 
+            // Change the image to the winning one
+            hangmanImage.src = "./img/jamman_win.png";
         } else {
-            // Actualiza la imagen según las vidas que faltan
-            imagenAhorcado.src = `./img/jamman_${NewPlayer.lives}.png`;
+            // Update the image based on the remaining lives
+            hangmanImage.src = `./img/jamman_${NewPlayer.lives}.png`;
         }
     }
 }
 
-// Función para reiniciar el juego
-function reiniciarJuego() {
-
+function restartGame() {
+     // Restart the game
     NewPlayer = new Player();
 
-    document.getElementById("btnReiniciar").style.display = "none";
-    document.getElementById("btnSortir").style.display = "none";
+    // Hide restart and exit buttons
+    document.getElementById("btnRestart").style.display = "none";
+    document.getElementById("btnExit").style.display = "none";
 
-    // Recargar la página para reiniciar el juego
+    // Reload the page to restart the game
     location.reload();
 }
 
 function startHamman() {   
-
+    // Start the game
     NewPlayer = new Player();
 
-    //Escojer una palabra de la lista y añadirla al jugador como word
-    var word = paraules[Math.floor(Math.random() * paraules.length)];
+    // Choose a word from the list and add it to the player as the target word
+    var word = words[Math.floor(Math.random() * words.length)];
     console.log(word);
 
-    document.getElementById("btnReiniciar").style.display = "none";
-    document.getElementById("btnSortir").style.display = "none";
+    // Hide restart and exit buttons
+    document.getElementById("btnRestart").style.display = "none";
+    document.getElementById("btnExit").style.display = "none";
 
-    
-    var abecedario = document.getElementsByClassName("lletra-btn");
+    // Enable all alphabet buttons
+    var alphabet = document.getElementsByClassName("letter-btn");
 
-    Array.from(abecedario).forEach(element => {
+    Array.from(alphabet).forEach(element => {
         element.disabled = false;
     });
 
-    //Cargar las _ _ _ a wordsToGuess  
+    // Load the underscores(_ _ _ _) to wordsToGuess
     var guessed = []
     word.toLowerCase().split("").forEach(element => { //Per cada lletra de la paraula
         if (element === " ") { //Si es un espai escriu un espai
@@ -244,16 +234,15 @@ function startHamman() {
 
     NewPlayer.wordToGuess(word, guessed)
 
-    //Poner los _ en el tablero
-    var puntitos = document.getElementById("wordsToGuess");
-    puntitos.innerText = guessed.toString().replaceAll(',', ' ',);
-
+    // Display underscores on the board
+    var dots = document.getElementById("wordsToGuess");
+    dots.innerText = guessed.toString().replaceAll(',', ' ',);
+    // Update the hangman image
     actualizarImagenAhorcado();
 }
 
-// Función para obtener y mostrar las estadísticas almacenadas en localStorage
 function showStats() {
-
+    // Update and display statistics stored in localStorage
     if(NewPlayer.lives == 0){
         loses++;
     }
@@ -266,20 +255,17 @@ function showStats() {
 }
 
 function updateUI() {
-
-    console.log(NewPlayer.haGanado);
-
-    //Mirar si ha gastado todas sus vidas
+    // Check if all lives are used or if the player has won
     if (NewPlayer.lives == 0 || NewPlayer.haGanadoGuessWord || NewPlayer.getHaGanado()) {
-        document.getElementById("btnReiniciar").style.display = "inline-block";
-        document.getElementById("btnSortir").style.display = "inline-block";
+        // Display restart and exit buttons
+        document.getElementById("btnRestart").style.display = "inline-block";
+        document.getElementById("btnExit").style.display = "inline-block";
     }
-
+    // Update the hangman image
     actualizarImagenAhorcado();
-    
+    // Show statistics
     showStats();
-
-    // Actualizar el tablero de letras adivinadas
-    var puntitos = document.getElementById("wordsToGuess");
-    puntitos.innerText = NewPlayer.guessed.toString().replaceAll(',', ' ',);
+    // Update the guessed word on the board
+    var dots = document.getElementById("wordsToGuess");
+    dots.innerText = NewPlayer.guessed.toString().replaceAll(',', ' ',);
 }
