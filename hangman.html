@@ -36,11 +36,18 @@
     <div id="tauler" style="display: none;">
         <div>
             <div>
+                <button id="btnReiniciar" onclick="startHamman()" style="display: none;">Reiniciar</button>
+                <button id="btnSortir" onclick="reiniciarJuego()" style="display: none;">Sortir</button>
+            </div>
+            <div>
                 <img src="./img/jamman_8.png" alt="" id="imgTauler"/>
             </div>
             <div>
                 <div id="wordsToGuess"></div>
-                <div> <input type="text" id="guessWord" placeholder="Guess!"/> <button onclick="guess(document.getElementById('guessWord').value, 1)">Gucci</button></div>
+                <div> 
+                    <input type="text" id="guessWord" placeholder="Guess!"/> 
+                    <button onclick="guessWord()">Gucci</button>
+                </div>
             </div>
         </div>
     </div>
