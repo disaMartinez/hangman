@@ -1,7 +1,7 @@
 // We can do it like this or by loading a txt file, as you prefer :)
 let words = [
-    'Elephant', 'Sunshine', 'Backpack','Ham', 'Paella', 'Churros', 'Sangria', 'Catalan cream',
-    'Harmony', 'Telescope', 'Enigma', 'Mango', 'Symphony', 'Lighthouse','Cheese',
+    'Elephant', 'Sunshine', 'Backpack','Ham', 'Paella', 'Churros', 'Sangria', 'Catalan cream','Fuet','Tomato',
+    'Harmony', 'Telescope', 'Enigma', 'Mango', 'Symphony', 'Lighthouse','Cheese','Wine', 'Gazpacho','Cannelloni',
     'Radiant', 'Quasar', 'Serendipity', 'Umbrella', 'Velocity', 'Cascade', 'Nebula', 'Zenith', 'Octopus', 'Butterfly',
     'Adventure', 'Chocolate', 'Pizza', 'Happy', 'Summer', 'Flower','Naruto','Dragon Ball','One Piece','Attack on Titan',
     'My Hero Academia','Death Note','Fullmetal Alchemist','One Punch Man','Sword Art Online',
@@ -77,7 +77,7 @@ function startGame() {
     // Create the player
     NewPlayer.setName(document.getElementById("playerInfo").value);
     // Display player information
-    document.getElementById("playerTitle").textContent = `${NewPlayer.name} is playing`;
+    document.getElementById("playerTitle").textContent = `${NewPlayer.name. toUpperCase()} is playing`;
 
     // Check if the name is not empty
     if (NewPlayer.name.trim() === '') {
@@ -86,6 +86,7 @@ function startGame() {
     }
     // Hide the player information div
     document.getElementById("playerDiv").style.display = "none";
+    document.getElementById("background").style.display = "none";
 
     // Display player info
     Array.from(document.getElementsByClassName("playerPlaying")).forEach(element => {

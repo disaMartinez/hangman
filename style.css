@@ -1,27 +1,43 @@
-body {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+@font-face {
+    font-family: 'Nico Moji';
+    src: url('./fonts/Nico-Moji/nicomoji/NicoMoji-Regular.ttf') format('truetype');
+  }
+  
+
+body {    
     margin: 0;
     align-items: center;
     justify-content: center;
     height: 100vh;
 }
 
+img {    
+    max-width: 55%;
+    height: auto;
+    opacity: 0.7;
+    background: url(./img/background.jpg), lightgray 50% / cover no-repeat;/* Cambiado a 0.7 para representar 70% de opacidad */
+    display: block;
+    margin: 0 auto; /* Centra horizontalmente la imagen */
+}
+
 header {
-    background-color: blue;
+    
+    background-color: lightseagreen;
     background-size: cover;
-    padding: 50px;
+    padding: 70px;
 }
 
 .title {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Nico Moji';
     color: white;
     text-align: center;
-    font-size: 55;
+    font-size: 100;
 }
 
 #alphabet {
     display: flex;
-    flex-wrap: wrap; /* Allow elements to wrap on lines if there is no space. */
+    flex-wrap: wrap;
+    /* Allow elements to wrap on lines if there is no space. */
     justify-content: center;
     margin-top: 5px;
 }
@@ -34,9 +50,10 @@ header {
     cursor: pointer;
 }
 
-#board, #board div {
+#board,
+#board div {
     flex-direction: row;
-    justify-content: space-around; 
+    justify-content: space-around;
     align-items: center;
     text-align: center;
     margin-top: 5px;
@@ -52,16 +69,44 @@ header {
     height: auto;
 }
 
-.playerInfo{
-    text-align: center;
-    align-items: center;
+#playerDiv {
+    text-align: center; /* Centra el contenido del contenedor */
 }
 
-.playerPlaying{
+.input {
+    width: 300px; /* Ajusta el ancho según sea necesario */
+    height: 50px; /* Ajusta la altura según sea necesario */
+    font-size: 18px; /* Ajusta el tamaño de la fuente según sea necesario */
+    padding: 10px; /* Añade relleno para hacerlo más espaciado */
+    margin-right: 10px; /* Ajusta el margen derecho según sea necesario */
+    display: inline-block; /* Hace que el input y el botón sean en línea */
+    border: 2px solid #ccc; /* Añade un borde para mayor claridad */
+    border-radius: 8px; /* Añade bordes redondeados */
+}
+
+.btn {
+    width: 120px; /* Ajusta el ancho según sea necesario */
+    height: 45px; /* Ajusta la altura según sea necesario */
+    font-size: 20px; /* Ajusta el tamaño de la fuente según sea necesario */
+    cursor: pointer;
+    background-color: #20B2AA; /* Color de fondo verde */
+    color: white; /* Color del texto blanco */
+    border: none;
+    border-radius: 5px; /* Añade bordes redondeados */
+}
+
+#playerTitle {
+    font-size: 300%;
+}
+
+.playerPlaying {
+    text-align: center; /* Centra el contenido del div */
+    padding: 20px;
+
     display: none;
     text-align: center;
     align-items: center;
-    background-color: lightblue;
+    /* background-color: lightblue; */
     margin: 0;
 }
 

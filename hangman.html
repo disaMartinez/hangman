@@ -12,20 +12,23 @@
 </head>
 
 <!-- Function that will load images or things to the page -->
-<body onload = "load()">
-
+<body onload = "load()" style="font-family: Nico Moji;">
     <header>
         <div id="title" class="title">HAMMAN</div>
     </header>
 
     <div id="playerDiv" class="playerInfo">
         <h1>Player Information</h1>
-        <input type="text" id="playerInfo" placeholder = "ENTER YOUR NAME!!">
-        <button id="btnStart" onclick="startGame()">Play</button>
+        <input class="input" type="text" id="playerInfo" placeholder = "Your name!">
+        <button id="btnStart" class="btn" onclick="startGame()">Play</button>
+    </div>
+
+    <div>
+        <img id="background" src="./img/background.jpg" class="img"/>
     </div>
 
     <div class="playerPlaying">
-        <h2 id="playerTitle" class="playerPlaying">Noelia's playing</h2>
+        <h2 id="playerTitle" class="playerPlaying"></h2>
         <div id="statistics" class="playerPlaying">
             <div id="stats">
                 <p>Wins: <span id="won">0</span>, Loses: <span id="lost">0</span></p>
@@ -45,8 +48,8 @@
             <div>
                 <div id="wordsToGuess"></div>
                 <div> 
-                    <input type="text" id="guessWord" placeholder="Guess!"/> 
-                    <button onclick="guessWord()">Gucci</button>
+                    <input class="input" type="text" id="guessWord" placeholder="Guess!"/> 
+                    <button class="btn" onclick="guessWord()">Gucci</button>
                 </div>
             </div>
         </div>
