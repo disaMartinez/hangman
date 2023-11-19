@@ -4,7 +4,6 @@ Welcome to the Hamman Game, a web application developed with HTML, CSS, and Java
 
 ## Features
 
-- **Engaging Gameplay:** Watch as pieces are hung and fall off for each incorrect guess.
 - **Random Word Selection:** The game selects random words to keep it interesting.
 - **User-Friendly Interface:** Enjoy a simple and intuitive design.
 
@@ -21,8 +20,7 @@ Guessing Letters:
 
 Hanging Pieces:
 
-- With each incorrect letter guess, a piece will fall.
-  The goal is to guess the word before all the peaces fall down.
+- With each incorrect letter guess, a piece will fall. The goal is to guess the word before all the peaces fall down.
 
 Guessing the Whole Word:
 
@@ -30,12 +28,11 @@ Guessing the Whole Word:
 
 Lives:
 
-- You start the game with a certain number of lives.
-  Guessing the entire word incorrectly or accumulating too many incorrect letter guesses will result in losing a life.
+- You start the game with 8 lives. Guessing the entire word incorrectly or accumulating too many incorrect letter guesses will result in losing a life.
 
 Winning:
 
-- Successfully guess the entire word before running out of lives to win the game.
+- Successfully guess the entire word before running out of lives to win the PANERA.
 
 Restart:
 
