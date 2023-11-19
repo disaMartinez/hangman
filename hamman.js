@@ -165,8 +165,6 @@ function guess(letter) {
             // Display the letter
             NewPlayer.guessed[index] = letter.textContent.toLowerCase();
         });
-        // Update the UI
-        updateUI();
     }
     // Add the guessed letter to NewPlayer guessed and letters
     NewPlayer.letters.push(letter);
@@ -201,6 +199,7 @@ function restartGame() {
     // Hide restart and exit buttons
     document.getElementById("btnRestart").style.display = "none";
     document.getElementById("btnExit").style.display = "none";
+    document.getElementById('alphabet').style.display = "block";
 
     // Reload the page to restart the game
     location.reload();
@@ -213,9 +212,11 @@ function startHamman() {
     // Choose a word from the list and add it to the player as the target word
     var word = words[Math.floor(Math.random() * words.length)];
 
-    // Hide restart and exit buttons
+    // Hide
     document.getElementById("btnRestart").style.display = "none";
     document.getElementById("btnExit").style.display = "none";
+    document.getElementById('alphabet').style.display = "flex";
+    document.getElementById('btnGuessWord').style.display = "inline";
 
     // Enable all alphabet buttons
     var alphabet = document.getElementsByClassName("letter-btn");
@@ -249,25 +250,61 @@ function showStats() {
         loses++;
     }
     else if( NewPlayer.haGanadoGuessWord || NewPlayer.getHaGanado()){
+        NewPlayer.haGanadoGuessWord = false;
         wins++;
     }
-
+    console.log(wins);
     document.getElementById('won').textContent = wins;
     document.getElementById('lost').textContent = loses;
 }
 
 function updateUI() {
+
+    // Update the hangman image
+    updateImage();
+    
     // Check if all lives are used or if the player has won
     if (NewPlayer.lives == 0 || NewPlayer.haGanadoGuessWord || NewPlayer.getHaGanado()) {
+
         // Display restart and exit buttons
         document.getElementById("btnRestart").style.display = "inline-block";
         document.getElementById("btnExit").style.display = "inline-block";
+        document.getElementById('alphabet').style.display = "none";
+        document.getElementById('btnGuessWord').style.display = "none";
+
+        if(NewPlayer.lives == 0){
+            playSoundMarioLose();
+            alert("The word was: " + NewPlayer.word);
+        }
+        else{
+            playSoundMarioWin();
+        }
+
+        // Show statistics
+        showStats();
     }
-    // Update the hangman image
-    updateImage();
-    // Show statistics
-    showStats();
+    
+    
     // Update the guessed word on the board
     var dots = document.getElementById("wordsToGuess");
     dots.innerText = NewPlayer.guessed.toString().replaceAll(',', ' ',);
+}
+
+// Function to play the sound
+function playSound() {
+    var audio = document.getElementById('myAudio');
+    audio.volume = 0.1; 
+    audio.play();
+}
+
+function playSoundMarioWin() {
+    var audio = document.getElementById('marioAudioWin');
+    audio.volume = 0.1;
+    audio.play();
+}
+
+function playSoundMarioLose() {
+    var audio = document.getElementById('marioAudioLose');
+    audio.volume = 0.1;
+    audio.play();
 }

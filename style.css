@@ -8,38 +8,36 @@ body {
     margin: 0;
     align-items: center;
     justify-content: center;
-    height: 100vh;
 }
 
-img {    
-    max-width: 55%;
+.img {    
+    max-width: 50%;
     height: auto;
     opacity: 0.7;
-    background: url(./img/background.jpg), lightgray 50% / cover no-repeat;/* Cambiado a 0.7 para representar 70% de opacidad */
+    background: url(./img/background.jpg), lightgray 50% / cover no-repeat;
     display: block;
-    margin: 0 auto; /* Centra horizontalmente la imagen */
+    margin: 0 auto;
 }
 
-header {
-    
+header {    
     background-color: lightseagreen;
     background-size: cover;
-    padding: 70px;
+    padding: 20px;
 }
 
 .title {
     font-family: 'Nico Moji';
     color: white;
     text-align: center;
-    font-size: 100;
+    font-size: 600%;
 }
 
 #alphabet {
     display: flex;
     flex-wrap: wrap;
-    /* Allow elements to wrap on lines if there is no space. */
     justify-content: center;
     margin-top: 5px;
+    margin-bottom:3% ;
 }
 
 .letter-btn {
@@ -70,46 +68,70 @@ header {
 }
 
 #playerDiv {
-    text-align: center; /* Centra el contenido del contenedor */
+    text-align: center; 
+    font-family: 'Nico Moji';
 }
 
 .input {
-    width: 300px; /* Ajusta el ancho según sea necesario */
-    height: 50px; /* Ajusta la altura según sea necesario */
-    font-size: 18px; /* Ajusta el tamaño de la fuente según sea necesario */
-    padding: 10px; /* Añade relleno para hacerlo más espaciado */
-    margin-right: 10px; /* Ajusta el margen derecho según sea necesario */
-    display: inline-block; /* Hace que el input y el botón sean en línea */
-    border: 2px solid #ccc; /* Añade un borde para mayor claridad */
-    border-radius: 8px; /* Añade bordes redondeados */
+    width: 300px; 
+    height: auto;
+    font-size: 18px; 
+    padding: 10px; 
+    margin-right: 10px;
+    display: inline-block; 
+    border: 2px solid #ccc; 
+    border-radius: 8px; 
 }
 
 .btn {
-    width: 120px; /* Ajusta el ancho según sea necesario */
-    height: 45px; /* Ajusta la altura según sea necesario */
-    font-size: 20px; /* Ajusta el tamaño de la fuente según sea necesario */
+    width: 120px; 
+    height: 45px; 
+    font-size: 20px; 
     cursor: pointer;
-    background-color: #20B2AA; /* Color de fondo verde */
-    color: white; /* Color del texto blanco */
+    background-color: #20B2AA; 
+    color: white; 
     border: none;
-    border-radius: 5px; /* Añade bordes redondeados */
+    border-radius: 5px;
 }
-
 #playerTitle {
-    font-size: 300%;
+    font-size: 150%;
 }
 
 .playerPlaying {
-    text-align: center; /* Centra el contenido del div */
-    padding: 20px;
-
+    text-align: center; 
     display: none;
     text-align: center;
     align-items: center;
-    /* background-color: lightblue; */
     margin: 0;
 }
 
 #stats {
     text-align: center;
+    font-size: 150%;
+}
+
+#btnRestart{
+    width: 120px; 
+    height: 45px; 
+    font-size: 25px;
+    background-color: lightsalmon; 
+    color: white; 
+    border: none;
+    border-radius: 5px;
+}
+
+#btnExit{
+    width: 120px; 
+    height: 45px; 
+    font-size: 25px;
+    background-color: lightcoral; 
+    color: white; 
+    border: none;
+    border-radius: 5px;
+}
+
+.btnEasterEgg {
+    background-color: transparent; 
+    color: white; 
+    border: 1px solid white;
 }

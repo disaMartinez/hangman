@@ -10,8 +10,8 @@ Welcome to the Hamman Game, a web application developed with HTML, CSS, and Java
 
 ## Screenshots
 
-![Screenshot 1](screenshot1.png)
-![Screenshot 2](screenshot2.png)
+![Screenshot 1](./screenshots/1.png)
+![Screenshot 2](./screenshots/2.png)
 
 ## How to Play
 
@@ -41,7 +41,7 @@ Restart:
 
 - Want to play again? Simply refresh the page or click the restart buttonand enjoy another round of the Hamman Game.
 
-1. Clone this repository or download it as a ZIP file.
-   ```bash
-   git clone https://github.com/disaMartinez/hangman
-   ```
+Clone this repository or download it as a ZIP file.
+```bash
+git clone https://github.com/disaMartinez/hangman
+```
