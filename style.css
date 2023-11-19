@@ -12,21 +12,21 @@ header {
     padding: 50px;
 }
 
-.titol {
+.title {
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: white;
     text-align: center;
     font-size: 55;
 }
 
-#abecedario {
+#alphabet {
     display: flex;
-    flex-wrap: wrap; /* Permite que los elementos se envuelvan en líneas si no hay espacio */
+    flex-wrap: wrap; /* Allow elements to wrap on lines if there is no space. */
     justify-content: center;
     margin-top: 5px;
 }
 
-.lletra-btn {
+.letter-btn {
     margin: 5px;
     padding: 10px;
     font-size: 16px;
@@ -34,7 +34,7 @@ header {
     cursor: pointer;
 }
 
-#tauler, #tauler div {
+#board, #board div {
     flex-direction: row;
     justify-content: space-around; 
     align-items: center;
@@ -43,11 +43,11 @@ header {
     padding: 5px;
 }
 
-#lletresPerEsbrinar {
+#wordsToGuess {
     font-size: 50px;
 }
 
-#imgTauler {
+#imgBoard {
     max-width: 35%;
     height: auto;
 }
@@ -65,6 +65,6 @@ header {
     margin: 0;
 }
 
-#estadistiques {
+#stats {
     text-align: center;
 }

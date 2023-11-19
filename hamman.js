@@ -1,8 +1,11 @@
 // We can do it like this or by loading a txt file, as you prefer :)
 let words = [
-    'Elephant', 'Sunshine', 'Backpack',
-    'Harmony', 'Telescope', 'Enigma', 'Mango', 'Symphony', 'Lighthouse',
-    'Radiant', 'Quasar', 'Serendipity', 'Saffron', 'Umbrella', 'Velocity', 'Whimsical', 'Cascade', 'Nebula', 'Zenith', 'Octopus'
+    'Elephant', 'Sunshine', 'Backpack','Ham', 'Paella', 'Churros', 'Sangria', 'Catalan cream',
+    'Harmony', 'Telescope', 'Enigma', 'Mango', 'Symphony', 'Lighthouse','Cheese',
+    'Radiant', 'Quasar', 'Serendipity', 'Umbrella', 'Velocity', 'Cascade', 'Nebula', 'Zenith', 'Octopus', 'Butterfly',
+    'Adventure', 'Chocolate', 'Pizza', 'Happy', 'Summer', 'Flower','Naruto','Dragon Ball','One Piece','Attack on Titan',
+    'My Hero Academia','Death Note','Fullmetal Alchemist','One Punch Man','Sword Art Online',
+    'Demon Slayer','Cowboy Bebop','Neon Genesis Evangelion','Hunter x Hunter','Tokyo Ghoul','Haikyuu'
 ];
 
 let loses = 0;
@@ -126,7 +129,6 @@ function guessWord(){
     // Check if the guessed word is correct
     if(wordToGuess.toLowerCase() == NewPlayer.word.toLowerCase()){
         NewPlayer.haGanadoGuessWord = true;
-        console.log(NewPlayer.haGanado);
     }
     else{
         // Decrease lives if the guessed word is incorrect
@@ -172,7 +174,7 @@ function guess(letter) {
     updateUI();
 }
 
-function actualizarImagenAhorcado() {
+function updateImage() {
     // Update the hangman image
     var hangmanImage = document.getElementById("imgBoard");
 
@@ -209,7 +211,6 @@ function startHamman() {
 
     // Choose a word from the list and add it to the player as the target word
     var word = words[Math.floor(Math.random() * words.length)];
-    console.log(word);
 
     // Hide restart and exit buttons
     document.getElementById("btnRestart").style.display = "none";
@@ -224,10 +225,10 @@ function startHamman() {
 
     // Load the underscores(_ _ _ _) to wordsToGuess
     var guessed = []
-    word.toLowerCase().split("").forEach(element => { //Per cada lletra de la paraula
-        if (element === " ") { //Si es un espai escriu un espai
+    word.toLowerCase().split("").forEach(element => {
+        if (element === " ") {
             guessed.push(" ")
-        } else { //Si es qualsevol altre lletra escriu un _
+        } else {
             guessed.push("_")
         }
     });
@@ -238,7 +239,7 @@ function startHamman() {
     var dots = document.getElementById("wordsToGuess");
     dots.innerText = guessed.toString().replaceAll(',', ' ',);
     // Update the hangman image
-    actualizarImagenAhorcado();
+    updateImage();
 }
 
 function showStats() {
@@ -262,7 +263,7 @@ function updateUI() {
         document.getElementById("btnExit").style.display = "inline-block";
     }
     // Update the hangman image
-    actualizarImagenAhorcado();
+    updateImage();
     // Show statistics
     showStats();
     // Update the guessed word on the board
