@@ -1,6 +1,6 @@
 # Hamman Game
 
-Welcome to the Hamman Game, a web application developed with HTML, CSS, and JavaScript. In this game, your challenge is to guess a hidden word correctly, and with each incorrect guess, pieces are hung and fall off.
+Welcome to the Hamman Game, a web application developed with HTML, CSS, and JavaScript. In this game, your challenge is to guess a hidden word correctly, and with each incorrect guess, pieces will fall off.
 
 ## Features
 
